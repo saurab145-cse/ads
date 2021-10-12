@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<char>v;
+struct node{
+char data;
+node* right;
+
+node(char val){
+    data=val;
+    right=NULL;
+    
+}
+};
+
+void palindrome(node* head)
+{
+    if(head==NULL)
+    cout<<"no data"<<endl;
+    node* temp=head;
+        
+        while(temp!=NULL){
+        v.push_back(temp->data);
+        temp= temp->right;
+}
+}
+bool palindrome(vector<char>v,int i, int j)
+{
+    if(v.size()==0)return 1;
+    if(i>j)return 0;
+    if(v[i]!=v[j])return 0;
+    if(v[i]==v[j]){
+        palindrome(v,i+1,j+1);
+        }
+        return 1;
+}
+    
+
+void display(node *head)
+{
+    if(head==NULL)
+    
+        cout<<"no data"<<endl;
+        node* temp=head;
+        
+        while(temp!=NULL){
+        cout<<temp->data<<"-->";
+        temp=temp->right;
+}
+    cout<<endl;
+    
+}
+
+int main()
+{
+    node* head =new node('s');
+    head-> right =new node('a');
+    head->right->right=new node('b');
+    head->right->right->right=new node('s');
+    
+    cout<<"display =";
+    display(head);
+    cout<<"vector =";
+    palindrome(head);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<""<<endl;
+        
+    }
+    bool ans= palindrome(v,0,v.size()-1);
+    cout<<"ans= "<<ans;
+    
+    return 0;
+    
+}
